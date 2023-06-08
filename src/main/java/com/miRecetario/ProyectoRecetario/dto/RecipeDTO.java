@@ -11,15 +11,12 @@ public class RecipeDTO {
 
     private LocalDateTime date;
     private boolean state;
-    private Professional professionals;
-    private Patient patients;
+
 
 
     public RecipeDTO(Recipe recipe) {
         this.date = recipe.getDate();
         this.state = recipe.isState();
-        this.professionals = recipe.getProfessional();
-        this.patients = recipe.getPatient();
     }
 
     public LocalDateTime getDate() {
@@ -38,19 +35,4 @@ public class RecipeDTO {
         this.state = state;
     }
 
-    public Professional getProfessionals() {
-        return professionals;
-    }
-
-    public void setProfessionals(Professional professionals) {
-        this.professionals = professionals;
-    }
-
-    public Patient getPatients() {
-        return patients;
-    }
-
-    public void setPatients(Patient patients) {
-        this.patients = patients;
-    }
 }
