@@ -7,10 +7,12 @@ import com.miRecetario.ProyectoRecetario.repositories.PatientRepository;
 import com.miRecetario.ProyectoRecetario.repositories.PersonRepository;
 import com.miRecetario.ProyectoRecetario.repositories.ProfessionalRepository;
 import com.miRecetario.ProyectoRecetario.repositories.RecipeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDateTime;
 
@@ -20,6 +22,9 @@ public class ProyectoRecetarioApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoRecetarioApplication.class, args);
 	}
+
+	@Autowired
+	PasswordEncoder passwordEncoder;
 
 	@Bean
 	public CommandLineRunner initData(PersonRepository personRepository, PatientRepository patientRepository, ProfessionalRepository professionalRepository,
@@ -31,14 +36,14 @@ public class ProyectoRecetarioApplication {
 			Professional professional = new Professional("Vanesa", "Bianco", "202020","Medico","mbianco","2020");
 			professionalRepository.save(professional);*/
 
-			Patient patient1 = new Patient("german", "sopeña", "38103643", "gSope", "123456", "Osam", "2145", "2477399209" );
-			Patient patient2 = new Patient("esteban", "sopeña", "25698742", "eSope","654321", "sancor", "2136549", "2477399210" );
+			Patient patient1 = new Patient("german", "sopeña", "38103643", "gSope", passwordEncoder.encode("123456"), "Osam", "2145", "2477399209" );
+			Patient patient2 = new Patient("esteban", "sopeña", "25698742", "eSope",passwordEncoder.encode("654321"), "sancor", "2136549", "2477399210" );
 			patientRepository.save(patient1);
 			patientRepository.save(patient2);
 
 
-			Professional professional1 = new Professional("Laura", "Forni", "21023", "Geriatria", "LForni","658943");
-			Professional professional2 = new Professional("Vanesa", "Bianco", "136694", "Medica Clinica", "VBianco","32164");
+			Professional professional1 = new Professional("Laura", "Forni", "21023", "Geriatria", "LForni",passwordEncoder.encode("658943"));
+			Professional professional2 = new Professional("Vanesa", "Bianco", "136694", "Medica Clinica", "VBianco",passwordEncoder.encode("32164"));
 			professionalRepository.save(professional1);
 			professionalRepository.save(professional2);
 

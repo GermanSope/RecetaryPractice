@@ -4,6 +4,10 @@ import com.miRecetario.ProyectoRecetario.models.Professional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import java.util.Optional;
+
 @RepositoryRestResource
 public interface ProfessionalRepository extends JpaRepository<Professional, Long> {
+
+    Optional<Professional> findByUser(String user);
 }

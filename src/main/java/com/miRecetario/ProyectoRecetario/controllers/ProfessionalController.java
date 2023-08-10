@@ -21,8 +21,6 @@ public class ProfessionalController {
     @Autowired
     ProfessionalRepository professionalRepository;
 
-    @Autowired
-    PersonRepository personRepository;
 
     @GetMapping("/professionals")
     public List<ProfessionalDTO> getProfessionals(){
