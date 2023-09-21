@@ -5,8 +5,11 @@ package com.miRecetario.ProyectoRecetario.models;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -22,6 +25,9 @@ public class Patient extends Person {
    @OneToMany(mappedBy="patient", fetch= FetchType.EAGER)
    private Set<Recipe> recipes = new HashSet<>();
 
+   @ManyToMany(mappedBy = "patients")
+   private List<Professional> professionals;
+
     public Patient() {
     }
 
@@ -31,6 +37,14 @@ public class Patient extends Person {
         this.obraSocial = obraSocial;
         this.oSNum = oSNum;
         this.cellphone = cellphone;
+    }
+
+    public Patient(String firstname, String lastname, String dni, String user, String password, String obraSocial, String oSNum) {
+        super(firstname, lastname, dni);
+        this.user = user;
+        this.password = password;
+        this.obraSocial = obraSocial;
+        this.oSNum = oSNum;
     }
 
     public Patient(String firstname, String lastname, String dni, String user, String password, String obraSocial, String oSNum, String cellphone) {
@@ -89,5 +103,13 @@ public class Patient extends Person {
 
     public void setRecipes(Set<Recipe> recipes) {
         this.recipes = recipes;
+    }
+
+    public List<Professional> getProfessionals() {
+        return professionals;
+    }
+
+    public void setProfessionals(List<Professional> professionals) {
+        this.professionals = professionals;
     }
 }

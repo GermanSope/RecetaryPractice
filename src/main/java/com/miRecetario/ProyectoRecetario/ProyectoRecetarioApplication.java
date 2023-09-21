@@ -15,6 +15,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class ProyectoRecetarioApplication {
@@ -49,6 +51,12 @@ public class ProyectoRecetarioApplication {
 
 			Recipe recipe1 = new Recipe(LocalDateTime.now(), false, professional1, patient1);
 			recipeRepository.save(recipe1);
+
+			List<Patient> pacientes = new ArrayList<>();
+			pacientes.add(patient1);
+			pacientes.add(patient2);
+			professional1.setPatients(pacientes);
+			professionalRepository.save(professional1);
 
 		};
 	}

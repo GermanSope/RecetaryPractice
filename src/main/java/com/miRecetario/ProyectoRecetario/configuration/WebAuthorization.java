@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@Configuration
 @EnableWebSecurity
+@Configuration
 public class WebAuthorization {
 
     @Bean
@@ -22,8 +22,8 @@ public class WebAuthorization {
     //Primero lee el path y luego verifica el tipo de autorizacion necesaria.
         http.authorizeRequests()
                 .antMatchers("/web/index.html", "/web/css/**", "/web/img/**", "/web/js/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/login").permitAll()
-                .antMatchers("/**").permitAll();
+                .antMatchers(HttpMethod.POST, "/api/login").permitAll();
+
 
         http.formLogin()
                 .usernameParameter("user")

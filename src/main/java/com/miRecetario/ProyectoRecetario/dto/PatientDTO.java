@@ -30,6 +30,16 @@ public class PatientDTO {
         this.repices = patient.getRecipes().stream().map(RecipeDTO::new).collect(Collectors.toSet());
     }
 
+    public PatientDTO(String firstname, String lastname, String dni, String user, String password, String obraSocial, String oSNum) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.dni = dni;
+        this.user = user;
+        this.password = password;
+        this.obraSocial = obraSocial;
+        this.oSNum = oSNum;
+    }
+
     public String getFirstname() {
         return firstname;
     }
